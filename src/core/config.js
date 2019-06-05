@@ -12,6 +12,8 @@ var config = {
 	// check for hex colors used without variables
 	colors: 'always',
 	// check for spaces after commas (0, 0, 0, .18)
+	colorsDelete: 'always',
+	// check for spaces after commas (0, 0, 0, .18)
 	commaSpace: 'always',
 	// check for space after line comment
 	commentSpace: 'always',
