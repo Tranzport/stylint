@@ -72,6 +72,10 @@ var list = [
   , '$customSwtichGreen'
   , '$customRippleGreen'
   , '$cell-offset-left'
+  , '$font-size-medium'
+  , 'font-family '
+  , 'rbga'
+  , 'rgb'
 ];
 
 
@@ -85,15 +89,16 @@ var ignoreRe = /^\s*(?:#|.*=.*)/
  * @param {string} [line] curr line being linted
  * @returns {boolean} true if hex color found, false if not
  */
-var colors = function( line ) {
+var colorsDelete = function( line ) {
 	if ( ignoreRe.test( line ) || this.state.root ) { return }
 
-	var hex = false
+  var hex = false
+  var variable = '';
 	// var match = hexRe.exec( line )
 
 	for (let x = 0 ; x < list.length ; x++ ) {
-		const variable = list[x];
-		if ( line.indexOf(variable8) < 0 ) {
+    variable = list[x];
+		if ( line.indexOf(variable) >= 0 ) {
 
 			hex = true
 			break
@@ -103,7 +108,7 @@ var colors = function( line ) {
 	// so basically if we're using #hex colors outside of a var declaration
 
 	if ( hex === true ) {
-		this.msg( 'this is a old variable please change for ITCSS new one.', match.index )
+		this.msg( `this is a old variable please change for ITCSS new one ${variable}.`, variable )
 	}
 
 	return hex
